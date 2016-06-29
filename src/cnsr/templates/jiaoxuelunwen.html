@@ -1,0 +1,56 @@
+﻿{% extends "base.html" %}
+{% block title %}研究成果-教学论文{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+                    <div id="page-wrapper">
+                    <div class="col-lg-pu-12">
+                            <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            教学论文
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead><tr>
+                                            <th>名称</th>
+                                            <th>成果类别</th>
+                                            <th>成果子类型</th>
+                                            <th>层次</th>
+                                            <th>期刊/会议名称</th>
+                                            <th>期刊/会议时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									
+									{% for post in posts %}
+								   {% if  post.achievement_type == "教学" and post.achievement_subtype == "论文"  and post.valid == 1%}
+                                        
+                                        <tr>
+                                            <td>{{ post.name }}</td>
+                                            <td>{{ post.achievement_type }}</td>
+                                            <td>{{ post.achievement_subtype }}</td>
+                                            <td>{{ post.level }}</td>
+                                            <td>{{ post.journal }}</td>
+                                            <td>{{ post.date }}</td>
+                                        </tr>
+										
+									{% endif %}
+									{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+{% endblock %}

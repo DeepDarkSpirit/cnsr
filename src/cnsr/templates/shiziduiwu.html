@@ -1,0 +1,61 @@
+﻿{% extends "base.html" %}
+{% block title %}关于我们-师资队伍{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+                  <div id="page-wrapper">
+                            <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            师资队伍
+                        </div>
+                        <!-- /.panel-heading -->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>职称</th>
+                                            <th>导师资格</th>
+                                            <th>实验室职务</th>
+                                            <th>社会兼职</th>
+                                            <th>学院行政职务</th>
+                                            <th>出生日期</th>
+                                            <th>电子邮件</th>
+                                            <th>移动电话</th>
+                                            <th>办公室电话</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{% for post in posts %}
+									{% if  post.valid == 1 %}
+                                        <tr>
+                                            <td>{{ post.name_cn }}</td>
+                                            <td>{{ post.title }}</td>
+                                            <td>{{ post.mentor_qual }}</td>
+                                            <td>{{ post.position_lab }}</td>
+                                            <td>{{ post.position_social }}</td>
+                                            <td>{{ post.position_school }}</td>
+                                            <td>{{ post.birthdate }}</td>
+                                            <td>{{ post.email }}</td>
+                                            <td>{{ post.cellphone }}</td>
+                                            <td>{{ post.tel }}</td>
+                                        </tr>
+										{% endif %}
+									{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+            </div>
+{% endblock %}

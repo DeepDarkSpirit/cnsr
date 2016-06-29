@@ -1,0 +1,127 @@
+﻿{% extends "base.html" %}
+{% block title %}动态消息-添加动态消息{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+                   <div id="page-wrapper">
+				   							 <div>
+ {% if errors %}
+       <ul>
+	   <p style="color:red;font-size: 4em;">{{ errors }}</p>
+        </ul>
+	{% endif %}
+	 </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">添加消息</h1>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                        <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <form></form>
+											<form  action="/addNewsResualt" method="get">
+                                                    <label>标题</label>
+                                                    <input name="title"  maxlength="100" required="required" class="form-control" >		
+                                                
+                                                    <label>消息类型</label>
+													<select name="cat" style="width:180px" required="required">
+													<option  value="新闻动态" >
+															新闻动态
+													</option>
+													<option  value="通知通告" >
+															通知通告
+													</option>
+													<option  value="学术活动" >
+															学术活动
+													</option>
+													</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <label>标签</label>
+                                                    <input name="tag"  maxlength="20" required="required" style="width:180px">
+                                                    <label>发布教师</label>
+                                                    <select name="teacherName" class="form-control" required="required">
+													<option  value="test" >
+															test
+													</option>
+													<option  value="薛静锋" >
+															薛静锋
+													</option>
+													<option  value="马锐" >
+															马锐
+													</option>
+													<option  value="赵小林" >
+															赵小林
+													</option>
+													<option  value="王勇" >
+															王勇
+													</option>
+													<option  value="胡晶晶" >
+															胡晶晶
+													</option>
+													<option  value="单纯" >
+															单纯
+													</option>
+													<option  value="杜彦辉" >
+															杜彦辉
+													</option>
+													</select>
+												
+                                                <label>开始日期</label>
+												<input  name="fromdate" placeholder="2015-09-23" required="required" class="laydate-icon" id="start" type="date" style=" width:150px; margin-right:10px;"/>
+                                                <label>结束日期</label>
+												<input name="todate" placeholder="2015-09-23" required="required" class="laydate-icon" id="end" type="date" style=" width:150px;  margin-right:10px;" />
+												</br>
+                                                    <label>内容</label>
+                                                    <textarea required="required"  maxlength="10000" name="news" rows="9" class="form-control" ></textarea>	
+                                               
+												<input type="submit" value="保存">
+                                            </form>
+                                        </div>
+                                        <!-- /.col-lg-6 (nested) -->
+                                    <!-- /.row (nested) -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+			
+											<script>
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: false,
+    istoday: true,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: false,
+    istoday: true,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+</script>
+                    </div>
+                    </div>
+
+	{% endblock %}

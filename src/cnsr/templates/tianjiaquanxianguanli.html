@@ -1,0 +1,86 @@
+﻿{% extends "base.html" %}
+{% block title %}权限管理-添加权限管理 {% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+                <div id="page-wrapper">
+                    
+                    <div class="row">
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>   
+                    <div class="col-lg-pu-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i> 权限管理
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="form-group">
+							<script>
+							function myFunction()
+							{
+							if({{ posts.auth_info_add}})
+							{
+							$("#add_checkbox").attr("checked","checked")
+							}
+							if({{ posts.auth_info_delete}})
+							{
+							$("#delete_checkbox").attr("checked","checked")
+							}
+							if({{ posts.auth_info_modify}})
+							{
+							$("#modify_checkbox").attr("checked","checked")
+							}
+							if({{ posts.auth_student}})
+							{
+							$("#auth_student_checkbox").attr("checked","checked")
+							}
+							}
+							$(document).ready(myFunction);
+							</script>
+							<form></form>
+							<form action="/quanxianguanliResult" method="get">
+                                            <label>姓名:{{ posts.name_cn}}</label>
+											</br>
+											<label>权限：</label>
+											</br>
+                                                <label>
+                                                    <input id="add_checkbox" name="add_checkbox" type="checkbox" value="1">添加信息
+                                                </label>
+											</br>
+                                                <label>
+                                                    <input id="delete_checkbox" name="delete_checkbox" type="checkbox" value="1">删除信息
+                                                </label>
+											</br>
+                                                <label>
+                                                    <input id="modify_checkbox"  name="modify_checkbox" type="checkbox" value="1">修改信息
+                                                </label>
+											</br>
+							{% if  posts.student_no  %}
+							<input name="id_type"   style="display:none" type="text" value="student">
+							<input name="id"   style="display:none" type="text" value="{{ posts.student_id }}">
+							{% elif  posts.teacher_id  %}
+							<label>
+                                    <input id="auth_student_checkbox"  name="auth_student_checkbox" type="checkbox" value="1">注册学生账号
+                            </label>
+							</br>
+							<input name="id_type"   style="display:none" type="text" value="teacher">
+							<input name="id"   style="display:none" type="text" value="{{ posts.teacher_id }}">
+							{% endif %}
+							<input class="btn btn-primary" type="submit" onclick="javascript:if(confirm('确认变更权限吗?'))window.location='/quanxianguanliResult'" value="提交"> 
+							</form>
+                            </div>
+
+                            <!-- /.panel-body -->
+                        </div>
+            </div>
+                              
+{% endblock %}

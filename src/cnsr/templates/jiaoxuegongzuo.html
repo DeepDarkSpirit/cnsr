@@ -1,0 +1,58 @@
+﻿{% extends "base.html" %}
+{% block title %}教学科研-教学工作{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+              <div id="page-wrapper">
+                    <div class="row">
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <div class="col-lg-pu-12">
+                          <!--   <div class="panel panel-default">-->
+                            <div class="row"><h3>实验室全职教师承担了软件学院多门本科、硕士、博士核心课程的教学任务，基本情况概览如下。</h3>
+                    <div class="panel panel-default">
+					
+                        <div class="panel-heading">
+                            教学工作
+                        </div>
+                        <!-- /.panel-heading -->
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>课程编号</th>
+                                            <th>课程名称</th>
+                                            <th>课程性质</th>
+                                            <th>学生层次</th>
+                                            <th>授课时间</th>
+                                            <th>学期</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									 
+                                   {% for post in posts %}
+								   {% if post.valid == 1%}
+                                        <tr>
+                                            <td>{{ post.course_id }}</td>
+                                            <td>{{ post.name }}</td>
+                                            <td>{{ post.course_type }}</td>
+                                            <td>{{ post.student_level }}</td>
+                                            <td>{{ post.start_week }}-{{ post.end_week }}</td>
+                                            <td>{{ post.semester }}</td>
+                                            <td>{{ post.remarks }}</td>
+                                        </tr>
+									{% endif %}
+									{% endfor %}   
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+{% endblock %}
+

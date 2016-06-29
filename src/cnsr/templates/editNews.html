@@ -1,0 +1,85 @@
+﻿{% extends "base.html" %}
+{% block title %}通知{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+            <div id="page-wrapper">				   							 <div>
+ {% if errors %}
+       <ul>
+	   <p style="color:red;font-size: 4em;">{{ errors }}</p>
+        </ul>
+	{% endif %}
+	 </div>
+                <div class="row">
+				
+                   <div class="col-lg-12">
+					
+                   </div>
+                <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+						<form></form>
+<form  name="editNewsForm" action="/editNewsResult" method="get" onsubmit="check()">
+<input type="text" name="article_id" value="{{posts.article_id}}"  style="display:none"></input> 
+                       <p>标题: <input   required="required"type="text" style="width:480px" name="title" style="color:gray" value="{{ posts.title }}" onpropertychange="this.style.color='black'" oninput="this.style.color='black'"> </p>
+
+						<p>消息类型:<select name="cat" style="width:180px" required="required">
+													<option  value="新闻动态" >
+															新闻动态
+													</option>
+													<option  value="通知通告" >
+															通知通告
+													</option>
+													<option  value="学术活动" >
+															学术活动
+													</option>
+													</select></p>
+                            <p>发布教师:
+							 <select name="teacherName" required="required" value="{{ posts.teacher_id }}">
+													<option  value="test" >
+															test
+													</option>
+													<option  value="薛静锋" >
+															薛静锋
+													</option>
+													<option  value="马锐" >
+															马锐
+													</option>
+													<option  value="赵小林" >
+															赵小林
+													</option>
+													<option  value="王勇" >
+															王勇
+													</option>
+													<option  value="胡晶晶" >
+															胡晶晶
+													</option>
+													<option  value="单纯" >
+															单纯
+													</option>
+													<option  value="杜彦辉" >
+															杜彦辉
+													</option>
+													</select></p>
+							<p>开始日期:
+												<input  name="fromdate"  value="{{ posts.activity_start_date|date:"Y-m-d"  }}" required="required" class="laydate-icon" id="start" type="date" style=" width:150px; margin-right:10px;"/></p>
+							<p>结束日期:
+							<input name="todate" value="{{ posts.activity_end_date|date:"Y-m-d" }}"  required="required" class="laydate-icon" id="end" type="date" style=" width:150px;  margin-right:10px;" /></p>
+							<p>标签:<input name="tag"  required="required" value="{{ posts.tag }}" style="width:180px"></p>
+							<textarea  required="required" name="news" rows="9" class="form-control" > {{ posts.text }}</textarea>
+							<input type="submit" value="保存">  <a href="/">取消</a>
+</form>
+                        </div>
+                        <!-- /.panel-heading -->
+                       
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                    </div>
+                     </div>
+	{% endblock %}

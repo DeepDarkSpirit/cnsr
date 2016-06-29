@@ -1,0 +1,54 @@
+﻿{% extends "base.html" %}
+{% block title %}通知{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+            <div id="page-wrapper">
+							 <div>
+ {% if errors %}
+       <ul>
+	   <p style="color:red;font-size: 4em;">{{ errors }}</p>
+        </ul>
+	{% endif %}
+	 </div>
+                <div class="row">
+				<div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>   
+                   <div class="col-lg-12">
+                       <h1 class="page-header">{{ posts.title }}</h1>
+                   </div>
+                <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p>消息类型:{{ posts.cat }}</p>
+                            <p>发布教师:{{ posts.teacher_id }}</p>
+							<p>开始日期:{{ posts.activity_start_date }}</p>
+							<p>结束日期:{{ posts.activity_end_date }}</p>
+							<p>发布日期:{{ posts.date }}</p>
+							<p>标签:{{ posts.tag }}</p>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <p>{{ posts.text }}</p>
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                    </div>
+                <div>
+                    <button type="button" class="btn btn-success" onclick="javascript:if(confirm('确认删除吗?'))window.location='/deleNews/?article_id={{ posts.article_id }}'">删 </button>
+                    <button type="button" class="btn btn-info" onclick=" javascript:if(confirm('确认修改吗?'))window.location='/editNews/?article_id={{ posts.article_id }}'">改</button>
+                </div>
+                     </div>
+	{% endblock %}

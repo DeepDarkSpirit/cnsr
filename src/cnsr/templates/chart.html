@@ -1,0 +1,32 @@
+﻿<body>
+<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/4.1.8/highcharts.js"></script>
+<script>
+	 $(function () { 
+	    $('#container').highcharts({
+	        chart: {
+	            type: 'column'
+	        },
+	        title: {
+	            text: '性别比例	'
+	        },
+	        xAxis: {
+	            categories: ['本科', '学硕', '专硕', '学博', '专博']
+	        },
+	        yAxis: {
+	            title: {
+	                text: '人数'
+	            }
+	        },
+	        series: [{
+	            name: '男',
+	            data: [30, 40, 15, 17, 10,  ]
+	        }, {
+	            name: '女',
+	            data: [10, 20, 15, 3, 2,  ]
+	        }]
+	    });
+	});
+   </script>
+   <div id="container" style="min-width:400px;height:300px;"></div>
+</body>

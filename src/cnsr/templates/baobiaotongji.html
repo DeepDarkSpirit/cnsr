@@ -1,0 +1,81 @@
+﻿{% extends "base.html" %}
+{% block title %}关于我们-联系我们{% endblock %}
+{% block wraptype %}
+       
+{% endblock %}
+{% block content %}
+    <script type="text/javascript">  
+        var chart;  
+        $(document).ready(function () {  
+            chart = new Highcharts.Chart({  
+                chart: {  
+                    renderTo: 'container',  
+                    defaultSeriesType: 'area', //图表类型 line, spline, area, areaspline, column, bar, pie , column，scatter  
+                    inverted: false //左右显示，默认上下正向。假如设置为true，则横纵坐标调换位置  
+                },  
+                xAxis: {  
+                    categories: ['本科', '学硕', '专硕', '学博', '专博'], //X轴的坐标值  
+                    title: { text: '类型'}  //Y轴坐标标题  labels:纵柱标尺  
+                },  
+                yAxis: {  
+                    title: { text: '人数(人)' },  //Y轴坐标标题  labels:纵柱标尺  
+                    min: 0  
+                },  
+                tooltip: {  
+                    formatter: function () {  
+                        //当鼠标悬置数据点时的格式化提示  
+                        return '总人数:' + Highcharts.numberFormat(this.y, 1) + '人<br/>类型:' + this.x;  
+                    }  
+                },  
+                credits: {  
+                    enabled: false  
+                },  
+                plotOptions: {  
+                    column: {  
+                        pointPadding: 0.2,  //图表柱形的  
+                        borderWidth: 0      //图表柱形的粗细  
+                    }, bar: {  
+                        dataLabels: {  
+                            enabled: false  
+                        }  
+                    }  
+                },  
+                title: { text: '学生类型比例' }, //图表主标题  
+                subtitle: { text: '在读学位' }, //图表副标题  
+                series: [{ name: '人数', data: [40, 60, 30, 20, 12]}]  
+            });  
+        });  
+    </script>  
+</head>  
+<body>  
+    <form id="form2" runat="server">  
+ <div id="page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">报表统计</h1>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                        <div class="row">
+                        <div class="col-lg-12">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+										   <div>  
+        <div id="container" style="width: 800px; height: 400px; margin: 0 auto">  
+        </div>  
+                   
+<iframe src="/chart" width="800px" height="400px"></iframe>
+                                        <!-- /.col-lg-6 (nested) -->
+                                    <!-- /.row (nested) -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    </div>
+    </div>  
+    </form>  
+{% endblock %}
